@@ -1,4 +1,4 @@
-package com.magdy.myforecast
+package com.magdy.myforecast.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.magdy.myforecast.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
