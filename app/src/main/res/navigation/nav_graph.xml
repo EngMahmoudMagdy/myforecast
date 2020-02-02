@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/destination_home">
+    <fragment
+        android:id="@+id/destination_home"
+        android:name="com.magdy.myforecast.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/destination_camera"
+        android:name="com.magdy.myforecast.CameraFragment"
+        android:label="CameraFragment">
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/destination_photos" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_photos"
+        android:name="com.magdy.myforecast.PhotosFragment"
+        android:label="PhotosFragment">
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/destination_home" />
+        <argument
+            android:name="noOfPhotos"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_settings"
+        android:name="com.magdy.myforecast.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
