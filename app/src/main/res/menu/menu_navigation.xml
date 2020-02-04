@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/destination_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/home" />
+        android:id="@+id/currentWeatherFragment"
+        android:icon="@drawable/ic_today_black_24dp"
+        android:title="@string/today" />
     <item
-        android:id="@+id/destination_camera"
-        android:icon="@drawable/ic_photo_camera_black_24dp"
-        android:title="@string/camera" />
+        android:id="@+id/futureListFragment"
+        android:icon="@drawable/ic_calendar_black"
+        android:title="@string/_7_days" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/settings" />
 </menu>
