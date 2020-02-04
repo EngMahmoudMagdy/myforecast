@@ -34,10 +34,23 @@ class CurrentWeatherFragment : Fragment() {
         // TODO: Use the ViewModel
         val apiService = ApiService()
 
-        GlobalScope.launch(Dispatchers.Main) {
-            val currentWeatherResponse = apiService.getCurrentWeahter("London").await()
-            text.text = currentWeatherResponse.toString()
-        }
+        /*val call = apiService.getCurrentWeahter2("London")
+        call.enqueue(object : Callback<CurrentWeatherResponse> {
+            override fun onFailure(call: Call<CurrentWeatherResponse>, t: Throwable) {
+
+            }
+
+            override fun onResponse(
+                call: Call<CurrentWeatherResponse>,
+                response: Response<CurrentWeatherResponse>
+            ) {
+                text.text = response.body().toString()
+            }
+        })*/
+         GlobalScope.launch(Dispatchers.Main) {
+             val currentWeatherResponse = apiService.getCurrentWeahter("London").await()
+             text.text = currentWeatherResponse.toString()
+         }
     }
 
 }

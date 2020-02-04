@@ -1,7 +1,7 @@
 package com.magdy.myforecast.data
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.magdy.myforecast.data.response.CurrentWeatherResponse
+import com.magdy.myforecast.data.network.response.CurrentWeatherResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -15,8 +15,8 @@ const val API_KEY = "eebaa2b11a33361b9318ae3e19fed85b"
 interface ApiService {
     @GET("current")
     fun getCurrentWeahter(
-        @Query("query") location: String,
-        @Query("language") lang: String = "en"
+        @Query("query") location: String/*,
+        @Query("language") lang: String = "en"*/
     ): Deferred<CurrentWeatherResponse>
 
     companion object {
@@ -38,7 +38,7 @@ interface ApiService {
                 .build()
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("https://api.weatherstack.com/")
+                .baseUrl("http://api.weatherstack.com")
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

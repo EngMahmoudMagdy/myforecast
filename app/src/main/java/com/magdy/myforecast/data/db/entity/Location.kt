@@ -1,4 +1,4 @@
-package com.magdy.myforecast.data.response
+package com.magdy.myforecast.data.db.entity
 
 
 import com.google.gson.annotations.SerializedName
