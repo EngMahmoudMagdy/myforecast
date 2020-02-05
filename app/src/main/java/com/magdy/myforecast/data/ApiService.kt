@@ -1,6 +1,7 @@
 package com.magdy.myforecast.data
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.magdy.myforecast.data.network.ConnectivityInterceptorImpl
 import com.magdy.myforecast.data.network.response.CurrentWeatherResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -35,6 +36,7 @@ interface ApiService {
             }
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
+//                .addInterceptor(ConnectivityInterceptorImpl())
                 .build()
             return Retrofit.Builder()
                 .client(okHttpClient)
