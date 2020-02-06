@@ -1,7 +1,6 @@
-package com.magdy.myforecast.data
+package com.magdy.myforecast.data.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.magdy.myforecast.data.network.ConnectivityInterceptorImpl
 import com.magdy.myforecast.data.network.response.CurrentWeatherResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -16,12 +15,14 @@ const val API_KEY = "eebaa2b11a33361b9318ae3e19fed85b"
 interface ApiService {
     @GET("current")
     fun getCurrentWeahter(
-        @Query("query") location: String/*,
-        @Query("language") lang: String = "en"*/
+        @Query("query") location: String,
+        @Query("units") lang: String = "m"
     ): Deferred<CurrentWeatherResponse>
 
     companion object {
-        operator fun invoke(): ApiService {
+        operator fun invoke(
+            connectivityInterceptor: ConnectivityInterceptor
+        ): ApiService {
             val requestInterceptor = Interceptor {
                 val url = it.request()
                     .url()
@@ -36,7 +37,7 @@ interface ApiService {
             }
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
-//                .addInterceptor(ConnectivityInterceptorImpl())
+                .addInterceptor(connectivityInterceptor)
                 .build()
             return Retrofit.Builder()
                 .client(okHttpClient)

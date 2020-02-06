@@ -1,7 +1,6 @@
 package com.magdy.myforecast.data.db.entity
 
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -32,8 +31,7 @@ data class CurrentWeatherEntry(
     val windDir: String,
     @SerializedName("wind_speed")
     val windSpeed: Int
-)
-{
+) {
     @PrimaryKey(autoGenerate = false)
-    var id  : Int = CURRENT_WEATHER_ID
+    var id: Int = CURRENT_WEATHER_ID
 }
