@@ -10,21 +10,22 @@ import com.magdy.myforecast.data.Converters
 const val CURRENT_WEATHER_ID = 0
 
 @Entity(tableName = "current_weather")
+@TypeConverters(Converters::class)
 data class CurrentWeatherEntry(
     val feelslike: Int,
     @SerializedName("observation_time")
     val observationTime: String,
-    val precip: Int,
+    val precip: Double,
     val temparature: Double,
     val visibility: Int,
     @SerializedName("weather_code")
     val weatherCode: Int,
     @SerializedName("weather_descriptions")
     @TypeConverters(Converters::class)
-    val weatherDescriptions: List<String>,
-    @SerializedName("weather_icons")
+    val weatherDescriptions: MutableList<String>,
     @TypeConverters(Converters::class)
-    val weatherIcons: List<String>,
+    @SerializedName("weather_icons")
+    val weatherIcons: MutableList<String>,
     @SerializedName("wind_degree")
     val windDegree: Int,
     @SerializedName("wind_dir")
