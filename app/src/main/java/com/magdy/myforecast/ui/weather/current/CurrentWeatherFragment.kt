@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.magdy.myforecast.R
 import com.magdy.myforecast.ui.base.ScopedFragment
 import kotlinx.android.synthetic.main.current_weather_fragment.*
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -32,7 +31,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(CurrentWeatherViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(CurrentWeatherViewModel::class.java)
         bindUI()
         // TODO: Use the ViewModel
         /* val apiService = ApiService(ConnectivityInterceptorImpl(this.context!!))
